@@ -41,10 +41,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
         }
-        .btn-dl {
-            background: linear-gradient(135deg, #16a34a, #15803d);
-            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
-        }
     </style>
 </head>
 <body>
@@ -53,7 +49,7 @@
         <h1>🎬 Video Web Streamer</h1>
         <p>Aapki Terabox Video Play hone ke liye ready hai!</p>
 
-        <a id="play-btn" href="#" target="_blank" class="btn">▶️ Play / Download Video</a>
+        <a id="play-btn" href="#" target="_blank" class="btn">▶️ Play Video Online</a>
     </div>
 
     <script>
@@ -61,12 +57,13 @@
         const teraboxUrl = urlParams.get('url');
 
         if (teraboxUrl) {
-            // Working Multi-Domain Terabox Player Server
-            const workingEngine = "https://teraboxdl.is-an.app/?url=" + encodeURIComponent(teraboxUrl);
-            document.getElementById('play-btn').href = workingEngine;
+            // Active Working Player Engine
+            const streamEngine = "https://tbplayer.xyz/stream?url=" + encodeURIComponent(teraboxUrl);
+            document.getElementById('play-btn').href = streamEngine;
         } else {
             document.querySelector('.card').innerHTML = "<h1>⚠️ Link Missing</h1><p>Kripya Bot se aaya hua link kholein.</p>";
         }
     </script>
 </body>
 </html>
+
