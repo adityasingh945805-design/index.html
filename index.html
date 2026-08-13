@@ -9,7 +9,7 @@
         body {
             background: #0f172a;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -40,9 +40,7 @@
             font-weight: bold;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-            transition: 0.2s;
         }
-        .btn:hover { background: #0284c7; }
         .btn-dl {
             background: linear-gradient(135deg, #16a34a, #15803d);
             box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
@@ -55,8 +53,7 @@
         <h1>🎬 Video Web Streamer</h1>
         <p>Aapki Terabox Video Play hone ke liye ready hai!</p>
 
-        <a id="play-btn" href="#" target="_blank" class="btn">▶️ Play Video Online</a>
-        <a id="dl-btn" href="#" target="_blank" class="btn btn-dl">📥 Direct Download</a>
+        <a id="play-btn" href="#" target="_blank" class="btn">▶️ Play / Download Video</a>
     </div>
 
     <script>
@@ -64,12 +61,11 @@
         const teraboxUrl = urlParams.get('url');
 
         if (teraboxUrl) {
-            // High-speed bypass player engine
-            const fastStream = "https://freeterabox.com/watch?url=" + encodeURIComponent(teraboxUrl);
-            document.getElementById('play-btn').href = fastStream;
-            document.getElementById('dl-btn').href = fastStream;
+            // Working Multi-Domain Terabox Player Server
+            const workingEngine = "https://teraboxdl.is-an.app/?url=" + encodeURIComponent(teraboxUrl);
+            document.getElementById('play-btn').href = workingEngine;
         } else {
-            document.querySelector('.card').innerHTML = "<h1>⚠️ No URL Provided</h1><p>Kripya Bot se aaya hua link open karein.</p>";
+            document.querySelector('.card').innerHTML = "<h1>⚠️ Link Missing</h1><p>Kripya Bot se aaya hua link kholein.</p>";
         }
     </script>
 </body>
