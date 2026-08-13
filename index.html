@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamHub - HD Video Player</title>
+    <title>Video Player Launcher</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -41,29 +41,39 @@
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
         }
+        .btn-alt {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+        }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>🎬 Video Web Streamer</h1>
-        <p>Aapki Terabox Video Play hone ke liye ready hai!</p>
+        <h1>🎬 High-Speed Web Player</h1>
+        <p>Aapki Video Play hone ke liye ready hai!</p>
 
-        <a id="play-btn" href="#" target="_blank" class="btn">▶️ Play Video Online</a>
+        <a id="play-btn-1" href="#" target="_blank" class="btn">▶️ Play via Fast Engine</a>
+        <a id="play-btn-2" href="#" target="_blank" class="btn btn-alt">🚀 Open via Terabox App/Web</a>
     </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const teraboxUrl = urlParams.get('url');
+        let teraboxUrl = urlParams.get('url');
 
         if (teraboxUrl) {
-            // Active Working Player Engine
-            const streamEngine = "https://tbplayer.xyz/stream?url=" + encodeURIComponent(teraboxUrl);
-            document.getElementById('play-btn').href = streamEngine;
+            // Engine 1: Terabox Web Direct Converter
+            let cleanUrl = teraboxUrl.replace("1024terabox.com", "terabox.app")
+                                    .replace("teraboxapp.com", "terabox.app")
+                                    .replace("freeterabox.com", "terabox.app");
+            
+            document.getElementById('play-btn-1').href = cleanUrl;
+
+            // Engine 2: Alternative Mirror Converter 
+            let mirrorUrl = teraboxUrl.replace("1024terabox.com", "terabox.com");
+            document.getElementById('play-btn-2').href = mirrorUrl;
         } else {
             document.querySelector('.card').innerHTML = "<h1>⚠️ Link Missing</h1><p>Kripya Bot se aaya hua link kholein.</p>";
         }
     </script>
 </body>
 </html>
-
