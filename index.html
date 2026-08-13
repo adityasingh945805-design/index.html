@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Terabox Web Streamer</title>
+    <title>Terabox Web Streamer</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -16,20 +16,32 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
+            text-align: center;
         }
         h1 { color: #38bdf8; margin-bottom: 20px; font-size: 24px; }
-        .player-card {
+        .card {
             width: 100%;
             max-width: 800px;
             background: #1e293b;
             border-radius: 12px;
-            overflow: hidden;
+            padding: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         iframe {
             width: 100%;
             height: 450px;
             border: none;
+            border-radius: 8px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background-color: #0284c7;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
         }
         @media (max-width: 600px) {
             iframe { height: 260px; }
@@ -40,8 +52,12 @@
 
     <h1>🍿 Terabox Web Player</h1>
 
-    <div class="player-card">
+    <div class="card">
         <iframe id="video-frame" src="" allowfullscreen></iframe>
+        <br>
+        <a id="fallback-btn" href="#" target="_blank" class="btn" style="display:none;">
+            🚀 Open in Alternative Player
+        </a>
     </div>
 
     <script>
@@ -49,8 +65,13 @@
         const teraboxUrl = urlParams.get('url');
 
         if (teraboxUrl) {
-            const embedUrl = "https://terabox.videoplayer.workers.dev/?url=" + encodeURIComponent(teraboxUrl);
-            document.getElementById('video-frame').src = embedUrl;
+            const streamEngine = "https://terabox.hnn.workers.dev/?url=" + encodeURIComponent(teraboxUrl);
+            document.getElementById('video-frame').src = streamEngine;
+
+            const altPlayer = "https://freeterabox.com/watch?url=" + encodeURIComponent(teraboxUrl);
+            const btn = document.getElementById('fallback-btn');
+            btn.href = altPlayer;
+            btn.style.display = "inline-block";
         }
     </script>
 </body>
