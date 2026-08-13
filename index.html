@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Terabox Web Streamer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 { color: #38bdf8; margin-bottom: 20px; font-size: 24px; }
+        .player-card {
+            width: 100%;
+            max-width: 800px;
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        @media (max-width: 600px) {
+            iframe { height: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🍿 Terabox Web Player</h1>
+
+    <div class="player-card">
+        <iframe id="video-frame" src="" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const teraboxUrl = urlParams.get('url');
+
+        if (teraboxUrl) {
+            const embedUrl = "https://terabox.videoplayer.workers.dev/?url=" + encodeURIComponent(teraboxUrl);
+            document.getElementById('video-frame').src = embedUrl;
+        }
+    </script>
+</body>
+</html>
